@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web-Pedia | 웹 해킹 원리</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="security.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <h1 class="logo">
+          <a href="index.html" style="text-decoration: none; color: inherit"
+            >Web-Pedia</a
+          >
+        </h1>
+
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="grammar.html">문법</a></li>
+          <li><a href="security-OWASP.html">OWASP Top 10</a></li>
+          <li><a href="security.html">해킹원리</a></li>
+          <li><a href="secure-coding.html">시큐어코딩</a></li>
+          <li><a href="team.html">Team</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <section class="intro-section">
+        <h2 class="warning-title">Web Hacking & Vulnerabilities</h2>
+        <p>대표적인 웹 공격 기법의 원리를 파악하고 위협에 대비하세요.</p>
+      </section>
+
+      <section class="vuln-card">
+        <div class="vuln-header">
+          <span class="risk-badge high">High Risk</span>
+          <h3>1. SQL Injection</h3>
+        </div>
+        <div class="vuln-body">
+          <p>
+            데이터베이스 쿼리에 악성 SQL 문을 넣어 로그인 우회, 정보 탈취, 데이터 변조를 일으키는 공격입니다.
+          </p>
+
+          <div class="concept-box">
+            <h4>공격 원리 예시</h4>
+            <p>
+              로그인 폼에 아래와 같은 구문을 입력하면 쿼리가 항상 '참'이 됩니다.
+            </p>
+            <div class="code-box">
+              <code>
+                &lt;form method="post" action="/login"&gt; <br>
+                &lt;input name="id"&gt; <br>
+                &lt;input name="pw" type="password"&gt; <br>
+                &lt;button type="submit"&gt;Login&lt;/button&gt; <br>
+              &lt;/form&gt; <br> <br>
+              &lt;script&gt; <br>
+                  const query = "SELECT * FROM users WHERE id = '" + id + "' AND pw = '" + pw + "'"; <br>
+              &lt;/script&gt;
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vuln-card">
+        <div class="vuln-header">
+          <span class="risk-badge high">High Risk</span>
+          <h3>2. XSS (Cross-Site Scripting)</h3>
+        </div>
+        <div class="vuln-body">
+          <p>
+            웹페이지에 악성 스크립트를 삽입해, 사용자의 브라우저에서 쿠키 탈취, 세션 악용, 화면 조작을 일으키는 공격입니다.
+          </p>
+          <div class="code-box">
+            <code>
+              &lt;div id="comment"&gt; &lt;/div&gt; <br><br>
+
+              &lt;script&gt; <br>
+                const comment = userInput; <br>
+                document.getElementById("comment").innerHTML = comment; <br>
+              &lt;/script&gt; <br>
+              </code>
+          </div>
+        </div>
+      </section>
+
+      <section class="vuln-card">
+        <div class="vuln-header">
+          <span class="risk-badge high">High Risk</span>
+          <h3>3. CSRF (Cross-Site Request Forgery)</h3>
+        </div>
+        <div class="vuln-body">
+          <p>
+            사용자가 의도하지 않은 요청을 보내게 만들어, 로그인된 상태를
+            악용하는 공격입니다. <br />
+            사용자가 모르는 사이에 계정 설정이 바뀌거나 송금이 실행될 수
+            있습니다.
+          </p>
+
+          <div class="concept-box">
+            <h4>공격 원리 예시</h4>
+            <p>
+              사용자의 브라우저가 의도하지 않은 요청을 보내면 CSRF가 발생할 수
+              있습니다. 실제 서비스에서는 CSRF 토큰 검증과 같은 방어가
+              필요합니다.
+            </p>
+            <div class="code-box">
+              <code>
+                &lt;img
+                src="https://example.com/account/change-email?email=attacker@example.com"
+                style="display:none;"&gt;
+              </code>
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vuln-card">
+        <div class="vuln-header">
+          <span class="risk-badge high">High Risk</span>
+          <h3>4. 업로드 취약점</h3>
+        </div>
+        <div class="vuln-body">
+          <p>
+            파일 업로드 기능의 허점을 이용해 악성 파일을 올리는 공격입니다.
+            <br />
+            웹셸이나 실행 파일이 업로드되면 서버가 위험해질 수 있습니다.
+          </p>
+
+          <div class="concept-box">
+            <h4>공격 원리 예시</h4>
+            <p>
+              파일 확장자 검사만 믿거나 업로드 파일을 그대로 실행하면 위험해질
+              수 있습니다. <br />
+              안전한 서버는 허용 형식 제한, 저장 경로 분리, 실행 권한 차단이
+              필요합니다.
+            </p>
+            <div class="code-box">
+              <code>
+                &lt;form action="/upload" method="post"
+                enctype="multipart/form-data"&gt; <br />
+                &lt;input type="file" name="file"&gt; <br />
+                &lt;button type="submit">Upload&lt;/button&gt; <br />
+                &lt;/form&gt;
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vuln-card">
+        <div class="vuln-header">
+          <span class="risk-badge medium">Medium Risk</span>
+        </div>
+          <h2>5. 디렉터리</h2>
+        </div>
+        <div class="vuln-body">
+          <p>허용되지 않은 폴더나 파일 경로에 접근하는 취약점입니다.</p>
+
+          <div class="concept-box">
+            <h4>공격 원리 예시</h4>
+            <p>
+              입력값을 그대로 경로에 붙이면 원치 않는 파일 접근이 생길 수
+              있습니다. <br />
+              경로 검증과 허용 목록 방식이 필요합니다.
+            </p>
+            <div class="code-box">
+              <code>
+                const path = "/var/www/uploads/" + req.query.file; <br />
+                res.sendFile(path);
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vuln-card">
+        <div class="vuln-header">
+          <span class="risk-badge high">High Risk</span>
+          <h3>6. 인증 우회</h3>
+        </div>
+        <div class="vuln-body">
+          <p>
+            정상적인 로그인 절차를 건너뛰고 접근 권한을 얻는 공격입니다. <br>
+            비밀번호 없이 관리자 페이지에 들어가는 경우가 있습니다.
+          </p>
+
+          <div class="concept-box">
+            <h4>공격 원리 예시</h4>
+            <p>
+              인증 절차를 건너뛰게 만들 수 있습니다. <br>
+              서버에서는 로그인 검증, 세션 확인, 권한 검사를 분리해서 처리해야 합니다.
+            </p>
+            <div class="code-box">
+              <code>
+                if (req.body.username === "admin") { <br>
+                  res.redirect("/admin"); <br>
+                }
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vuln-card">
+        <div class="vuln-header">
+          <span class="risk-badge high">High Risk</span>
+          <h3>7. 하이재킹</h3>
+        </div>
+        <div class="vuln-body">
+          <p>
+            정상 세션이나 접속 정보를 가로채서 탈취하는 공격입니다.
+          </p>
+
+          <div class="concept-box">
+            <h4>공격 원리 예시</h4>
+            <p>
+              세션 토큰이 노출되면 다른 사용자인 척 접속할 수 있습니다. <br>
+              세션 보호, HTTPS, 만료 시간, 재발급이 중요합니다.
+            </p>
+            <div class="code-box">
+              <code>
+                fetch("/mypage", { <br>
+                  headers: { "Cookie": "session=stolen-session-id" } <br>
+                  });
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Web-Pedia Project. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

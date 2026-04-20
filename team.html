@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web-Pedia | 팀 소개</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .team-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2열 배치 */
+        gap: 30px;
+        margin-top: 40px;
+      }
+      .member-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        border-top: 8px solid #007bff;
+      }
+      .member-info h3 {
+        margin-bottom: 5px;
+        color: #333;
+      }
+      .member-id {
+        color: #888;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+      }
+
+      .link-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .link-btn {
+        display: block;
+        padding: 10px;
+        background: #f0f4f8;
+        color: #007bff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+      .link-btn:hover {
+        background: #007bff;
+        color: #fff;
+      }
+
+      /* 반응형: 모바일에서는 1열 */
+      @media (max-width: 600px) {
+        .team-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <h1 class="logo">
+          <a href="index.html" style="text-decoration: none; color: inherit"
+            >Web-Pedia</a
+          >
+        </h1>
+
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="grammar.html">문법</a></li>
+          <li><a href="security-OWASP.html">OWASP Top 10</a></li>
+          <li><a href="security.html">해킹원리</a></li>
+          <li><a href="secure-coding.html">시큐어코딩</a></li>
+          <li><a href="team.html">Team</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <section style="text-align: center; margin-top: 50px">
+        <h1 style="color: #007bff; font-size: 2.5rem">Web-Pedia Members</h1>
+        <p>프로젝트를 함께한 팀원들을 소개합니다.</p>
+      </section>
+
+      <div class="team-container">
+        <div class="member-card">
+          <div class="member-info">
+            <h3>함유진 (Leader)</h3>
+            <p class="member-id">학번: 92410988</p>
+          </div>
+          <div class="link-group">
+            <a href="https://github.com/chael2" class="link-btn">GitHub</a>
+            <a href="https://chael2.tistory.com/" class="link-btn"
+              >개인 블로그</a
+            >
+            <a href="#" class="link-btn">포트폴리오</a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="member-info">
+            <h3>남유진</h3>
+            <p class="member-id">학번: 92513194</p>
+          </div>
+          <div class="link-group">
+            <a href="https://github.com/yoojin33" class="link-btn">GitHub</a>
+            <a href="https://blog.naver.com/quarter0330" class="link-btn"
+              >개인 블로그</a
+            >
+            <a href="#" class="link-btn">포트폴리오</a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="member-info">
+            <h3>조윤서</h3>
+            <p class="member-id">학번: 92513417</p>
+          </div>
+          <div class="link-group">
+            <a href="https://github.com/avac2613" class="link-btn">GitHub</a>
+            <a href="https://blog.naver.com/avac-ode2613" class="link-btn"
+              >개인 블로그</a
+            >
+            <a href="#" class="link-btn">포트폴리오</a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="member-info">
+            <h3>홍영우</h3>
+            <p class="member-id">학번: 92308812</p>
+          </div>
+          <div class="link-group">
+            <a href="https://github.com/hongwoo0516-commits" class="link-btn"
+              >GitHub</a
+            >
+            <a href="https://blog.naver.com/youngwoo0405" class="link-btn"
+              >개인 블로그</a
+            >
+            <a href="#" class="link-btn">포트폴리오</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>© 2026 Web-Pedia Project. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
